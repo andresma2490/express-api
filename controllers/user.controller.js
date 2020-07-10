@@ -137,14 +137,17 @@ class UserController {
                 bcrypt.compare(password, user.password, (error, result) =>{
                     if(result == true){
                         // create the token
-                        const token = jwt.sign({
-                                id: user.id,
-                                username: user.username
-                            }, 'secretTokenHere', {
+                        const payload = {
+                            id: user.id,
+                            username: user.username
+                        }
+                        const token = jwt.sign(
+                            payload,
+                            process.env.JWT_SECRET, {
                                 expiresIn: 86400
-                            })
+                        })
                         res.json({
-                            token: token
+                            accessToken: token
                         });
                     }else{
                         res.json({

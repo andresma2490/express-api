@@ -1,3 +1,7 @@
+require ('dotenv').config({
+    path: `.env.${process.env.NODE_ENV}`
+});
+
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
@@ -6,8 +10,6 @@ const passport = require('passport');
 const passportMiddleware = require('./middlewares/passport');
 const routes = require('./routes/index.js');
 const port = process.env.PORT || 8000;
-
-require('./middlewares/passport');
 
 // middlewares
 app.use(morgan('dev'));
