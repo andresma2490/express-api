@@ -7,7 +7,7 @@ const app = express();
 const morgan = require('morgan');
 const cors = require('cors');
 const passport = require('passport');
-const passportMiddleware = require('./middlewares/passport');
+require('./middlewares/passport')(passport);
 const routes = require('./routes/index.js');
 const port = process.env.PORT || 8000;
 
@@ -16,7 +16,6 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors());
 app.use(passport.initialize());
-passport.use('jwt', passportMiddleware);
 
 // routes
 app.use('/api/', routes);

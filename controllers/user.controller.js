@@ -34,7 +34,7 @@ class UserController {
                 password: hash,
                 username
             }, {
-                fields: ['id', 'password', 'username']
+                fields: ['id', 'password', 'username'] // NO createAt & updateAt 
             })
             .then(newUser =>{            
                 res.json({
@@ -147,7 +147,7 @@ class UserController {
                                 expiresIn: 86400
                         })
                         res.json({
-                            accessToken: token
+                            access_token: token
                         });
                     }else{
                         res.json({

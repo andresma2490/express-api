@@ -7,5 +7,16 @@
 </head>
 <body>
     Hey
+    <script>
+        let accessToken;
+
+        function authenticate(provider) {
+        window.authenticateCallback = function(token) {
+            accessToken = token;
+        };
+
+        window.open('/api/users/auth/' + provider);
+        }
+    </script>
 </body>
 </html>

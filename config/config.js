@@ -1,5 +1,9 @@
+require ('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+});
+
 // to migrate use
-// export NODE_ENV=development; npx sequelize db:migrate 
+// export NODE_ENV=development; npx sequelize-cli db:migrate 
 
 module.exports = {
   development: {
